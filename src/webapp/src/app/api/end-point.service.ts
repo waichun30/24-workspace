@@ -7,10 +7,12 @@ import {environment} from "../../environments/environment.prod";
 export class EndPointService {
 
   testapi='';
+  testorder='';
 
 
   constructor() {
     this.testapi =environment.apiHost + '/1.0/test/status';
+    this.testorder =environment.apiHost + '/1.0/test/order';
 
   }
 }
