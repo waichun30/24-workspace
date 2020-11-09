@@ -1,0 +1,67 @@
+CREATE DATABASE 24_workspace;
+
+-- product
+-- DROP TABLE IF EXISTS `product`;
+CREATE TABLE IF NOT EXISTS `product` (
+  `product_code` varchar(64) NOT NULL COMMENT 'product code',
+  `merchant_code` varchar(64) NOT NULL COMMENT 'merchant code',
+  `product_name` varchar(64) NOT NULL COMMENT 'product name',
+  `product_img_path` varchar(64) NOT NULL COMMENT 'product image path',
+  `product_description` varchar(64) DEFAULT NULL COMMENT 'product description',
+  `product_currency` varchar(3) NOT NULL COMMENT 'product currency',
+  `product_amount` bigint(20) NOT NULL COMMENT 'product amount',
+  `product_status` varchar(16) NOT NULL COMMENT 'product status',
+  `product_type` varchar(16) NOT NULL COMMENT 'product type',
+  `created_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT 'created time',
+  `modified_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6) COMMENT 'modified time',
+  `extend_info` varchar(4096) DEFAULT NULL COMMENT 'key value for extra information',
+  PRIMARY KEY (`product_code`),
+  KEY `idx_merchant_code` (`merchant_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='product table'
+;
+
+-- merchant
+-- DROP TABLE IF EXISTS `merchant`;
+CREATE TABLE IF NOT EXISTS `merchant` (
+  `merchant_code` varchar(64) NOT NULL COMMENT 'merchant code',
+  `merchant_name` varchar(64) NOT NULL COMMENT 'merchant name',
+  `merchant_type` varchar(64) DEFAULT NULL COMMENT 'merchant_type',
+  `merchant_address` varchar(3) NOT NULL COMMENT 'merchant address',
+  `merchant_contact_number` varchar(16) NOT NULL COMMENT 'merchant contact number',
+  `merchant_status` varchar(16) NOT NULL COMMENT 'merchant status',
+  `created_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT 'created time',
+  `modified_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6) COMMENT 'modified time',
+  `extend_info` varchar(4096) DEFAULT NULL COMMENT 'key value for extra information',
+  PRIMARY KEY (`merchant_code`),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='merchant table'
+;
+
+-- image
+-- DROP TABLE IF EXISTS `image`;
+CREATE TABLE IF NOT EXISTS `image` (
+  `image_code` varchar(64) NOT NULL COMMENT 'image code',
+  `product_code` varchar(64) NOT NULL COMMENT 'product code',
+  `merchant_code` varchar(64) NOT NULL COMMENT 'merchant code',
+  `image_name` varchar(64) NOT NULL COMMENT 'image name',
+  `image_type` varchar(16) NOT NULL COMMENT 'image type',
+  `image_path` varchar(1024) NOT NULL COMMENT 'image url path',
+  `created_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT 'created time',
+  `modified_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6) COMMENT 'modified time',
+  `extend_info` varchar(4096) DEFAULT NULL COMMENT 'key value for extra information',
+  PRIMARY KEY (`image_code`),
+  KEY `idx_merchant_product` (`merchant_code`, `product_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='image table'
+;
+
+-- qr code
+-- DROP TABLE IF EXISTS `qr_code`;
+CREATE TABLE IF NOT EXISTS `qr_code` (
+  `qr_code` varchar(64) NOT NULL COMMENT 'qr code',
+  `merchant_code` varchar(64) NOT NULL COMMENT 'merchant code',
+  `created_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT 'created time',
+  `modified_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6) COMMENT 'modified time',
+  `extend_info` varchar(4096) DEFAULT NULL COMMENT 'key value for extra information',
+  PRIMARY KEY (`qr_code`),
+  KEY `idx_merchant` (`merchant_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='qr table'
+;
