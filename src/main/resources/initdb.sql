@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `merchant` (
   `created_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT 'created time',
   `modified_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6) COMMENT 'modified time',
   `extend_info` varchar(4096) DEFAULT NULL COMMENT 'key value for extra information',
-  PRIMARY KEY (`merchant_code`),
+  PRIMARY KEY (`merchant_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='merchant table'
 ;
 
