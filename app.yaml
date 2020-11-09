@@ -1,0 +1,21 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+service: webapp
+handlers:
+  - url: /
+    static_files: dist/webapp/index.html
+    upload: dist/webapp/index.html
+  - url: /*
+    static_dir: dist/webapp
+
+skip_files:
+  - e2e/
+  - node_modules/
+  - src/
+  - coverage
+  - ^(.*/)?\..*$
+  - ^(.*/)?.*\.json$
+  - ^(.*/)?.*\.md$
+  - ^(.*/)?.*\.yaml$
+  - ^LICENSE

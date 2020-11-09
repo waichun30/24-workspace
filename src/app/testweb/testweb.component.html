@@ -1,0 +1,63 @@
+<p>testweb works!</p>
+
+
+
+<!--<div>-->
+  <!--<img src="assets/img/eWalletLogo.png">-->
+<!--</div>-->
+
+
+<!--<li *ngFor="let objectg of object1">-->
+  <!--<div>-->
+    <!--<img src="{{objectg.img}}" class = "menu">-->
+  <!--</div>-->
+<!--</li>-->
+
+<ul >
+  <!--<li class="tableItem">{{object.id}}</li>-->
+  <!--<li class="titleTableItem  header"><img src="{{object.img}}" class = "menu"></li>-->
+  <!--<li class="tableItem">{{object.name}}</li>-->
+  <!--<li>{{object.price}}</li>-->
+</ul>
+
+<ul>
+  <li *ngFor="let object of object1">
+    <div>
+      <p>{{object.itemName}}</p>
+      <img src="{{object.itemImgPath}}" class = "menu">
+      <p>{{object.itemCode}}</p>
+      <p>{{object.itemPrice}}</p>
+    </div>
+  </li>
+</ul>
+
+
+<ul>
+  <li *ngFor="let object of object1">
+    <a href="/city/kuala-lumpur">
+      <figure>
+        <picture><img src="{{object.itemImgPath}}" class="menu"></picture>
+        <figcaption>
+                <span>
+                    Kuala Lumpur
+                </span>
+        </figcaption>
+      </figure>
+    </a>
+  </li>
+</ul>
+
+<!--<table class="statsTable">-->
+  <!--<tr>-->
+    <!--<td>Id</td>-->
+    <!--<td>Image</td>-->
+    <!--<td>Name</td>-->
+    <!--<td>Price</td>-->
+  <!--</tr>-->
+  <!--<tr *ngFor="let object of object1">-->
+  <!--<td class="tableItem">{{object.id}}</td>-->
+  <!--<td class="titleTableItem  header"><img src="{{object.img}}" class = "menu"></td>-->
+  <!--<td class="tableItem">{{object.name}}</td>-->
+  <!--<td class="tableItem">{{object.price}}</td>-->
+<!--</tr>-->
+<!--</table>-->
