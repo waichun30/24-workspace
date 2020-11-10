@@ -1,0 +1,33 @@
+@startuml
+
+title scan QR
+
+autonumber
+
+actor "User" as User
+
+participant "FrontEnd" as FE #DeepSkyBlue/MintCream
+
+participant "BackEnd" as BE #DeepSkyBlue/MintCream
+
+User -> FE : scan QR
+FE -> FE : open URL
+FE -> BE : get table QR
+BE -> BE : check table QR with order
+
+BE -> BE : get merchant product
+BE -> FE : return merchant product
+FE -> FE : build product listing
+
+BE -> FE : return table name
+
+FE -> User : return product listing and table name
+
+group order found
+    BE -> BE : get order id
+    BE -> BE : get get order product
+    BE -> FE : return order
+    FE -> User : return order
+end
+
+@enduml

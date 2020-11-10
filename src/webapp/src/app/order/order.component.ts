@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {OrderService} from "./order.service";
+import {Order} from "../model/order";
 
 @Component({
   selector: 'app-order',
@@ -10,7 +11,7 @@ import {OrderService} from "./order.service";
 export class OrderComponent implements OnInit {
 
   orderId: string;
-  result: string;
+  order: Order;
 
   constructor(private route: ActivatedRoute, private orderService: OrderService) {
 
@@ -22,7 +23,7 @@ export class OrderComponent implements OnInit {
     this.orderService.checkOrder(this.orderId)
       .subscribe(
         result => {
-          this.result = result;
+          this.order = result;
         }
       );
   }

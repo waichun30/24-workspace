@@ -7,9 +7,14 @@ package com.center.tool.controller.base;
 import com.alibaba.fastjson.JSON;
 import com.center.tool.logging.Loggers;
 import com.center.tool.logging.LoggingUtil;
-import org.springframework.boot.configurationprocessor.json.JSONException;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.util.StringUtils;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.Writer;
+import java.util.Map;
 
 /**
  * @author wb-phoonwaic553932
@@ -18,16 +23,15 @@ import org.springframework.util.StringUtils;
 public abstract class AbstractController {
 
 
-    protected String parseResponse(Object o) {
+    protected String parseResponse(Object o, HttpServletRequest request) {
         LoggingUtil.info(Loggers.BIZ_HTTP, this.getClass().getSimpleName() + "Request - " + o);
 
         // TODO throw exception
         if (!StringUtils.isEmpty(requiredField())) {
-            String json = JSON.toJSONString(o);
             try {
-                checkMandatoryField(json);
+                checkMandatoryField(o.toString());
             } catch (JSONException e) {
-                e.printStackTrace();
+                return e.getMessage();
             }
         }
 
@@ -58,7 +62,32 @@ public abstract class AbstractController {
         return val;
     }
 
+    /**
+     * Send the response
+     *
+     * @param respData
+     * @param response
+     * @throws Exception
+     */
+    protected void sendResponse(String respData, HttpServletResponse response) throws Exception {
+        Writer writer = response.getWriter();
+        writer.write(respData);
+        writer.flush();
+        writer.close();
+    }
+
+    /**
+     * get the list of required field
+     *
+     * @return
+     */
     protected abstract String[] requiredField();
 
-    protected abstract Object doService(Object o);
+    /**
+     * Apply all business logic over here
+     *
+     * @param o
+     * @return
+     */
+    protected abstract Map<String, Object> doService(Object o);
 }
