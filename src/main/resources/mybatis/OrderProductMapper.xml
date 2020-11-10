@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.center.tool.entity.OrderProductMapper">
+
+    <resultMap id="OrderProductDO" type="com.center.tool.entity.model.OrderProductDO">
+        <result column="order_product_code" property="orderProductCode"/>
+        <result column="order_code" property="orderCode"/>
+        <result column="product_code" property="productCode"/>
+        <result column="quantity" property="quantity"/>
+        <result column="memo" property="memo"/>
+        <result column="merchant_status" property="merchantStatus"/>
+        <result column="created_time" property="createdTime"/>
+        <result column="modified_time" property="modifiedTime"/>
+        <result column="extend_info" property="extendInfo"/>
+    </resultMap>
+
+
+    <select id="getOrderProductByOrderCode" parameterType="String" resultMap="OrderProductDO">
+        SELECT
+            *
+        FROM
+            order_product
+        WHERE
+            order_code = #{orderCode}
+    </select>
+
+</mapper>

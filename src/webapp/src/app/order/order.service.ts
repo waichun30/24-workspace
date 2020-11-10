@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {EndPointService} from "../api/end-point.service";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class OrderService {
   constructor(private http: HttpClient,private endpointProvider: EndPointService) {
   }
 
-  checkOrder(orderId) {
+  checkOrder(orderId):Observable<any> {
     return this.http.get<any>(this.endpointProvider.testorder + "/" + orderId)
   }
+
 }

@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author wb-phoonwaic553932
@@ -30,12 +34,14 @@ public class TestController extends AbstractController {
     private static final String[] REQUIRED = {"type"};
 
     @PostMapping(value = "/1.0/test/status", produces = "application/json")
-    public String handle(@RequestBody String jsonRequest) {
-        return parseResponse(jsonRequest);
+    public void handle(@RequestBody String jsonRequest, HttpServletResponse response, HttpServletRequest request) throws Exception {
+        sendResponse(parseResponse(jsonRequest, request), response);
     }
 
     @Override
-    protected Object doService(Object o) {
+    protected Map<String, Object> doService(Object o) {
+
+        Map<String, Object> respMap = new HashMap<>();
 
         String type = (String) getObject(o, "type");
 
@@ -43,7 +49,10 @@ public class TestController extends AbstractController {
 
         ProductListResponse productListResponse = new ProductListResponse();
         productListResponse.setProductsList(productList);
-        return productListResponse;
+
+        respMap.put("productList", productListResponse);
+
+        return respMap;
     }
 
     @Override

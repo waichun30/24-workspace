@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.center.tool.entity.OrderMapper">
+
+    <resultMap id="OrderDO" type="com.center.tool.entity.model.OrderDO">
+        <result column="order_code" property="orderCode"/>
+        <result column="merchant_code" property="merchantCode"/>
+        <result column="qr_code" property="qrCode"/>
+        <result column="order_status" property="orderStatus"/>
+        <result column="created_time" property="createdTime"/>
+        <result column="modified_time" property="modifiedTime"/>
+        <result column="extend_info" property="extendInfo"/>
+    </resultMap>
+
+
+    <select id="getOrderByQrCode" parameterType="String" resultMap="OrderDO">
+        SELECT
+            *
+        FROM
+            order_table
+        WHERE
+            qr_code = #{qrCode}
+    </select>
+
+</mapper>

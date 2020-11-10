@@ -58,10 +58,43 @@ CREATE TABLE IF NOT EXISTS `image` (
 CREATE TABLE IF NOT EXISTS `qr_code` (
   `qr_code` varchar(64) NOT NULL COMMENT 'qr code',
   `merchant_code` varchar(64) NOT NULL COMMENT 'merchant code',
+  `qr_name` varchar(64) NOT NULL COMMENT 'qr name',
   `created_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT 'created time',
   `modified_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6) COMMENT 'modified time',
   `extend_info` varchar(4096) DEFAULT NULL COMMENT 'key value for extra information',
   PRIMARY KEY (`qr_code`),
   KEY `idx_merchant` (`merchant_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='qr table'
+;
+
+-- order
+-- DROP TABLE IF EXISTS `order`;
+CREATE TABLE IF NOT EXISTS `order` (
+  `order_code` varchar(64) NOT NULL COMMENT 'order code',
+  `merchant_code` varchar(64) NOT NULL COMMENT 'merchant code',
+  `qr_code` varchar(64) NOT NULL COMMENT 'qr code',
+  `order_status` varchar(16) NOT NULL COMMENT 'order status',
+  `created_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT 'created time',
+  `modified_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6) COMMENT 'modified time',
+  `extend_info` varchar(4096) DEFAULT NULL COMMENT 'key value for extra information',
+  PRIMARY KEY (`order_code`),
+  KEY `idx_merchant` (`merchant_code`),
+  KEY `idx_qr_code` (`qr_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='order table'
+;
+
+-- order item
+-- DROP TABLE IF EXISTS `order_product`;
+CREATE TABLE IF NOT EXISTS `order_product` (
+  `order_product_code` varchar(64) NOT NULL COMMENT 'order product code',
+  `order_code` varchar(64) NOT NULL COMMENT 'order code',
+  `product_code` varchar(64) NOT NULL COMMENT 'product code',
+  `quantity` varchar(64) NOT NULL COMMENT 'quantity',
+  `memo` varchar(64) NOT NULL COMMENT 'memo',
+  `created_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT 'created time',
+  `modified_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6) COMMENT 'modified time',
+  `extend_info` varchar(4096) DEFAULT NULL COMMENT 'key value for extra information',
+  PRIMARY KEY (`order_product_code`),
+  KEY `idx_order` (`order_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='order product table'
 ;
