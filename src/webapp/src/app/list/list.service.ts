@@ -23,6 +23,6 @@ export class ListService {
   }
 
   updateOrder (productCode):Observable<any>{
-    return this.http.post<any>(this.endpointProvider.updateCart, "{ \"productCode\":\""+productCode+"\", \"cartId\":\"ORD20201111586269\", \"quantity\":\"2\", \"memo\":\"hello\" }", this.httpOptions);
+    return this.http.post<any>(this.endpointProvider.updateCart, "{ \"productCode\":\""+productCode+"\", \"cartId\":\"ORD20201111586269\", \"quantity\":\"1\", \"memo\":\"\" }", this.httpOptions);
   }
 }

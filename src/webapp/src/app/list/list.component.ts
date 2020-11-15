@@ -29,14 +29,45 @@ export class ListComponent implements OnInit {
       );
   }
 
-  myAngular(productCode: String){
+  addToCart(productCode: string){
     console.log('got come in');
+    console.log('got ' + productCode);
 
-      this.listService.updateOrder(productCode).subscribe(
+
+    this.listService.updateOrder(productCode).subscribe(
         result => {
           console.log('post d');
+          var current = (document.getElementById(productCode) as HTMLElement).innerHTML;
+
+          console.log(current);
+          var add = parseInt(current)+ 1;
+          console.log(add);
+          var value = add as unknown as string;
+          console.log(value);
+          document.getElementById(productCode).textContent=value;
         }
       );
+  }
+
+  removeFromCart(productCode: string){
+    console.log('got come in');
+    console.log('got ' + productCode);
+    var current = (document.getElementById(productCode) as HTMLElement).innerHTML;
+
+    if(current.toString() == "0"){
+      return;
+    }
+    this.listService.updateOrder(productCode).subscribe(
+      result => {
+        console.log('post d');
+        console.log(current);
+        var add = parseInt(current)- 1;
+        console.log(add);
+        var value = add as unknown as string;
+        console.log(value);
+        document.getElementById(productCode).textContent=value;
+      }
+    );
   }
 
 }

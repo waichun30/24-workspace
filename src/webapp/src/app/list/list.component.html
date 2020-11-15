@@ -63,10 +63,9 @@
               <div class="menu-item-name">{{prod.productName}}</div>
               <div class="menu-item-price"> {{prod.productPrice}} </div>
               <div class="menu-item-description"> {{prod.productDescription}} </div>
-              <div class="menu-item-description"> <button class="button" (click)="myAngular(prod.productCode)">-</button>
-
-                <p>this value why {{prod.count}}</p>
-                <button class="button" (click)="myAngular()">+</button> </div>
+              <div class="menu-item-description"> <button class="button" (click)="removeFromCart(prod.productCode)">-</button>
+                <span id="{{prod.productCode}}">0</span>
+                <button class="button" (click)="addToCart(prod.productCode)">+</button> </div>
             </div>
           </li>
 
