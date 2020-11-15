@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gusto</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <script type="text/javascript">
+    function myFunction() {
+      var response = "Hi";
+      alert(response);
+    }
+  </script>
+
+
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+
+<!-- About Section -->
+<div id="about">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-md-6 about-img"> </div>
+      <div class="col-xs-12 col-md-3 col-md-offset-1">
+        <div class="about-text">
+          <div class="section-title">
+            <h2>Our Story</h2>
+          </div>
+          <p>asbfaui iewfcnc eewfh iew eiw cnew iwc mc ewi hks  nioew nc kxchiew ii jeci oewcewh ifugw ceiwyf ekw cnue wfrien bufadt dsoor nioc iutrwa nocd a owa coaiyd
+            cofewi u ricklfids mu a842oi yoai4jk cysd8skl4u oijflksvov apsfan4oi3y9vsnaoyv98sdklfisdfamufotunderiosyanding uoadfjoim noycoalrhio.</p>
+          <p>Live with purpose.</p>
+          <p id="demo"></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Restaurant Menu Section -->
+<div id="restaurant-menu">
+  <div class="container">
+    <div class="section-title text-center">
+      <h2>Menu</h2>
+    </div>
+    <div class="row">
+
+      <div class="col-xs-12 col-sm-6" *ngFor="let cat of category">
+
+        <div class="menu-section">
+          <h2 class="menu-section-title">{{cat.categoryName}}</h2>
+
+          <li *ngFor="let prod of cat.productDTOList">
+
+            <!--<div class="item__image-container">-->
+            <figure>
+              <img src="{{prod.productImgPath}}" class="item__image">
+            </figure>
+            <!--</div>-->
+            <div class="menu-item">
+              <div class="menu-item-name">{{prod.productName}}</div>
+              <div class="menu-item-price"> {{prod.productPrice}} </div>
+              <div class="menu-item-description"> {{prod.productDescription}} </div>
+              <div class="menu-item-description"> <button class="button" (click)="myAngular(prod.productCode)">-</button>
+
+                <p>this value why {{prod.count}}</p>
+                <button class="button" (click)="myAngular()">+</button> </div>
+            </div>
+          </li>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- Gallery Section -->
+<div id="gallery">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-6 col-md-3">
+        <div class="gallery-item"> <img src="img/gallery/01.jpg" class="img-responsive" alt=""></div>
+      </div>
+      <div class="col-xs-6 col-md-3">
+        <div class="gallery-item"> <img src="img/gallery/02.jpg" class="img-responsive" alt=""></div>
+      </div>
+      <div class="col-xs-6 col-md-3">
+        <div class="gallery-item"> <img src="img/gallery/03.jpg" class="img-responsive" alt=""></div>
+      </div>
+      <div class="col-xs-6 col-md-3">
+        <div class="gallery-item"> <img src="img/gallery/04.jpg" class="img-responsive" alt=""></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Team Section -->
+<div id="team">
+  <div class="container">
+    <div id="row">
+      <div class="col-md-6">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="section-title">
+            <h2>Meet Our Chef</h2>
+          </div>
+          <p>#JyInKL</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at. Duis sed dapibus leo nec ornare diam commodo nibh.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at. Duis sed dapibus leo nec ornare.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="team-img"><img src="https://storage.googleapis.com/24-workspace/merchant/1038/item/chef.png" alt="..."></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Contact Section -->
+<div id="contact" class="text-center">
+  <div class="container text-center">
+    <div class="col-md-4">
+      <h3>Reservations</h3>
+      <div class="contact-item">
+        <p>Please call</p>
+        <p>(887) 654-3210</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h3>Address</h3>
+      <div class="contact-item">
+        <p>4321 California St,</p>
+        <p>San Francisco, CA 12345</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h3>Opening Hours</h3>
+      <div class="contact-item">
+        <p>Mon-Thurs: 10:00 AM - 11:00 PM</p>
+        <p>Fri-Sun: 11:00 AM - 02:00 AM</p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="section-title text-center">
+      <h3>Send us a message</h3>
+    </div>
+    <div class="col-md-8 col-md-offset-2">
+      <form name="sentMessage" id="contactForm" novalidate>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" id="name" class="form-control" placeholder="Name" required="required">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="email" id="email" class="form-control" placeholder="Email" required="required">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <textarea name="message" id="message" class="form-control" rows="4" placeholder="Message" required></textarea>
+          <p class="help-block text-danger"></p>
+        </div>
+        <div id="success"></div>
+        <button type="submit" class="btn btn-custom btn-lg">Send Message</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div id="footer">
+  <div class="container text-center">
+    <div class="col-md-6">
+      <p>&copy; 2017 . All rights reserved. Design by ME</p>
+    </div>
+    <div class="col-md-6">
+      <div class="social">
+        <ul>
+          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="js/jquery.1.11.1.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/SmoothScroll.js"></script>
+<script type="text/javascript" src="js/jqBootstrapValidation.js"></script>
+<script type="text/javascript" src="js/contact_me.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+
+
+</body>
+</html>
