@@ -26,9 +26,9 @@ public interface ProductMapper {
     /**
      * get list of ProductDO by merchantCode and type
      * @param merchantCode
-     * @param productType
+     * @param categoryCode
      * @return
      */
-    List<ProductDO> getProductDoByMerchantCodeAndType(String merchantCode, String productType);
+    List<ProductDO> getProductDoByMerchantCodeAndCategory(String merchantCode, String categoryCode);
 }
 

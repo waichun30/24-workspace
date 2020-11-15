@@ -45,10 +45,10 @@ public class GoogleCloudSqlClientService {
                 System.out.println(resultSet.getString(1) + resultSet.getString(2) + resultSet.getString(3) + resultSet.getString(4));
 
                 ProductBO product = new ProductBO();
-                product.setItemCode(resultSet.getString(1));
-                product.setItemName(resultSet.getString(2));
-                product.setItemImgPath(resultSet.getString(3));
-                product.setItemPrice(resultSet.getString(4));
+//                product.setItemCode(resultSet.getString(1));
+//                product.setItemName(resultSet.getString(2));
+//                product.setItemImgPath(resultSet.getString(3));
+//                product.setItemPrice(resultSet.getString(4));
 
                 productList.add(product);
             }

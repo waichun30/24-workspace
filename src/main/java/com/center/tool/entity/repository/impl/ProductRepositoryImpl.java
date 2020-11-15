@@ -34,8 +34,8 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
 
     @Override
-    public List<ProductDO> getProductByMerchantCodeAndType(String code, String type) {
-        return productMapper.getProductDoByMerchantCodeAndType(code, type);
+    public List<ProductDO> getProductByMerchantCodeAndCategory(String code, String type) {
+        return productMapper.getProductDoByMerchantCodeAndCategory(code, type);
     }
 
 }

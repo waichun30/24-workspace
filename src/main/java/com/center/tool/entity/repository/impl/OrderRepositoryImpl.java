@@ -24,4 +24,14 @@ public class OrderRepositoryImpl implements OrderRepository {
     public OrderDO getOrderByQrCode(String qrCode) {
         return orderMapper.getOrderByQrCode(qrCode);
     }
+
+    @Override
+    public OrderDO getOrderByOrderCode(String orderCode) {
+        return orderMapper.getOrderByOrderCode(orderCode);
+    }
+
+    @Override
+    public void updateOrderAmountByCode(String orderCode, int amount) {
+        orderMapper.updateOrderAmountByCode(orderCode,amount);
+    }
 }

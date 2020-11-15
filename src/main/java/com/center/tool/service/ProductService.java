@@ -5,6 +5,8 @@
 package com.center.tool.service;
 
 import com.center.tool.model.common.ProductBO;
+import com.center.tool.model.dto.MerchantProdCategoryDTO;
+import com.center.tool.model.dto.ProductDTO;
 
 import java.util.List;
 
@@ -16,4 +18,7 @@ public interface ProductService {
 
     List<ProductBO> getProductByMerchantCodeAndType(String merchantCode, String type);
 
+    List<ProductDTO> getProductByQrCode(String qrCode);
+
+    List<MerchantProdCategoryDTO> getMerchantProdCategoryByQrCode(String qrCode);
 }

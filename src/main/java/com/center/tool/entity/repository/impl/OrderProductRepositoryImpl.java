@@ -26,4 +26,11 @@ public class OrderProductRepositoryImpl implements OrderProductRepository {
     public List<OrderProductDO> getOrderProductByOrderCode(String orderCode) {
         return orderProductMapper.getOrderProductByOrderCode(orderCode);
     }
+
+    @Override
+    public void updateOrderProduct(String orderCode, String productCode, String quantity, String memo) {
+        orderProductMapper.updateOrderProduct(orderCode, productCode, quantity, memo);
+    }
+
+
 }

@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `product_currency` varchar(3) NOT NULL COMMENT 'product currency',
   `product_amount` bigint(20) NOT NULL COMMENT 'product amount',
   `product_status` varchar(16) NOT NULL COMMENT 'product status',
-  `product_type` varchar(16) NOT NULL COMMENT 'product type',
+  `category_code` varchar(16) NOT NULL COMMENT 'category code',
   `created_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT 'created time',
   `modified_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6) COMMENT 'modified time',
   `extend_info` varchar(4096) DEFAULT NULL COMMENT 'key value for extra information',
@@ -73,6 +73,7 @@ CREATE TABLE IF NOT EXISTS `order` (
   `order_code` varchar(64) NOT NULL COMMENT 'order code',
   `merchant_code` varchar(64) NOT NULL COMMENT 'merchant code',
   `qr_code` varchar(64) NOT NULL COMMENT 'qr code',
+  `amount` int(11) NOT NULL DEFAULT  0 COMMENT 'amount',
   `order_status` varchar(16) NOT NULL COMMENT 'order status',
   `created_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT 'created time',
   `modified_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6) COMMENT 'modified time',
@@ -86,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `order` (
 -- order item
 -- DROP TABLE IF EXISTS `order_product`;
 CREATE TABLE IF NOT EXISTS `order_product` (
-  `order_product_code` varchar(64) NOT NULL COMMENT 'order product code',
+  `order_product_code` int(10) NOT NULL AUTO_INCREMENT COMMENT 'order product code',
   `order_code` varchar(64) NOT NULL COMMENT 'order code',
   `product_code` varchar(64) NOT NULL COMMENT 'product code',
   `quantity` varchar(64) NOT NULL COMMENT 'quantity',
@@ -94,7 +95,37 @@ CREATE TABLE IF NOT EXISTS `order_product` (
   `created_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT 'created time',
   `modified_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6) COMMENT 'modified time',
   `extend_info` varchar(4096) DEFAULT NULL COMMENT 'key value for extra information',
-  PRIMARY KEY (`order_product_code`),
-  KEY `idx_order` (`order_code`)
+  PRIMARY KEY (`order_product_code`)  ,
+  KEY `idx_order_code` (`order_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='order product table'
+;
+
+-- event log
+-- DROP TABLE IF EXISTS `event_log`;
+CREATE TABLE IF NOT EXISTS `event_log` (
+  `id` varchar(64) NOT NULL COMMENT 'primary key',
+  `type` varchar(64) NOT NULL COMMENT 'type',
+  `content` varchar(1024) NOT NULL COMMENT 'content',
+  `status` varchar(64) NOT NULL COMMENT 'status',
+  `memo` varchar(1024) NOT NULL COMMENT 'memo',
+  `created_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT 'created time',
+  `modified_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6) COMMENT 'modified time',
+  `extend_info` varchar(4096) DEFAULT NULL COMMENT 'key value for extra information',
+  PRIMARY KEY (`id`),
+  KEY `idx_type` (`type`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='event log table'
+;
+
+-- merchant product category
+-- DROP TABLE IF EXISTS `merchant_prod_category`;
+CREATE TABLE IF NOT EXISTS `merchant_prod_category` (
+  `merchant_code` varchar(64) NOT NULL COMMENT 'merchant code',
+  `category_code` varchar(64) NOT NULL COMMENT 'category code',
+  `category_name` varchar(1024) NOT NULL COMMENT 'category name',
+  `sort` int NOT NULL COMMENT 'sort',
+  `created_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT 'created time',
+  `modified_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6) COMMENT 'modified time',
+  `extend_info` varchar(4096) DEFAULT NULL COMMENT 'key value for extra information',
+  PRIMARY KEY (`merchant_code`, `category_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='merchant product category table'
 ;

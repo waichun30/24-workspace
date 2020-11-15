@@ -4,9 +4,11 @@
  */
 package com.center.tool.service.impl;
 
+import com.center.tool.entity.model.OrderDO;
 import com.center.tool.entity.model.OrderProductDO;
 import com.center.tool.entity.model.ProductDO;
 import com.center.tool.entity.repository.OrderProductRepository;
+import com.center.tool.entity.repository.OrderRepository;
 import com.center.tool.entity.repository.ProductRepository;
 import com.center.tool.model.common.OrderProductBO;
 import com.center.tool.model.common.ProductBO;
@@ -30,6 +32,9 @@ public class OrderProductServiceImpl implements OrderProductService {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private OrderRepository orderRepository;
+
     @Override
     public List<OrderProductBO> getOrderProductByOrderCode(String orderCode) {
 
@@ -43,9 +48,9 @@ public class OrderProductServiceImpl implements OrderProductService {
             ProductDO productDO = productRepository.getProductByProductCode(orderProductDO.getProductCode());
 
             ProductBO productBO = new ProductBO();
-            productBO.setItemPrice(productDO.getProductAmount());
-            productBO.setItemImgPath(productDO.getProductImgPath());
-            productBO.setItemName(productDO.getProductName());
+//            productBO.setItemPrice(productDO.getProductAmount());
+//            productBO.setItemImgPath(productDO.getProductImgPath());
+//            productBO.setItemName(productDO.getProductName());
 
             orderProductBO.setProductBO(productBO);
             orderProductBO.setQuantity(orderProductDO.getQuantity());
@@ -55,5 +60,19 @@ public class OrderProductServiceImpl implements OrderProductService {
         }
 
         return orderProductBOList;
+    }
+
+    @Override
+    public void updateOrderProduct(String orderCode, String productCode, String quantity, String memo) {
+
+        ProductDO productDO = productRepository.getProductByProductCode(productCode);
+
+        OrderDO orderDO = orderRepository.getOrderByOrderCode(orderCode);
+
+        int amount = (Integer.parseInt(productDO.getProductAmount()) * 3) + orderDO.getAmount();
+
+        orderRepository.updateOrderAmountByCode(orderCode, amount);
+
+        orderProductRepository.updateOrderProduct(orderCode, productCode, quantity, memo);
     }
 }

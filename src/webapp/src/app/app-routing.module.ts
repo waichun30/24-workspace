@@ -3,12 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { TestwebComponent} from "./testweb/testweb.component";
 import { WebComponent} from "./web/web.component";
 import {OrderComponent} from "./order/order.component";
+import {ListComponent} from "./list/list.component";
 
 
 const routes: Routes = [
   {path: 'reload', component: TestwebComponent},
   {path: 'web', component: WebComponent},
-  {path: 'order/:orderId', component: OrderComponent}
+  {path: 'order/:orderId', component: OrderComponent},
+  {path: 'list/:qrCode', component: ListComponent}
 ];
 
 @NgModule({

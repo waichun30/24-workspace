@@ -16,4 +16,6 @@ public interface OrderProductService {
 
     List<OrderProductBO> getOrderProductByOrderCode(String orderCode);
 
+    void updateOrderProduct(String orderCode, String productCode, String quantity, String memo);
+
 }

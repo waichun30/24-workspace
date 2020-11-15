@@ -10,7 +10,7 @@
         <result column="product_description" property="productDescription"/>
         <result column="product_currency" property="productCurrency"/>
         <result column="product_amount" property="productAmount"/>
-        <result column="product_status" property="productStatus"/>
+        <result column="category_code" property="categoryCode"/>
         <result column="product_type" property="productType"/>
         <result column="created_time" property="createdTime"/>
         <result column="modified_time" property="modifiedTime"/>
@@ -36,7 +36,7 @@
             merchant_code = #{merchantCode}
     </select>
 
-    <select id="getProductDoByMerchantCodeAndType" parameterType="String" resultMap="ProductDO">
+    <select id="getProductDoByMerchantCodeAndCategory" parameterType="String" resultMap="ProductDO">
         SELECT
             *
         FROM
@@ -44,7 +44,7 @@
         WHERE
             merchant_code = #{merchantCode}
             AND
-            product_type = #{productType}
+            category_code = #{categoryCode}
     </select>
 
 </mapper>

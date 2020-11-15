@@ -4,6 +4,7 @@
  */
 package com.center.tool.model.common;
 
+import com.center.tool.model.enums.OrderStatusEnum;
 import lombok.Data;
 
 import java.util.Date;
@@ -19,9 +20,9 @@ public class OrderBO {
 
     private String merchantCode;
 
-    private String qrCode;
+    private QrCodeBO qrCodeBO;
 
-    private String orderStatus;
+    private OrderStatusEnum orderStatus;
 
     private Date createdTime;
 

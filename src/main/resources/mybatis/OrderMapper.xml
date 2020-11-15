@@ -6,6 +6,7 @@
         <result column="order_code" property="orderCode"/>
         <result column="merchant_code" property="merchantCode"/>
         <result column="qr_code" property="qrCode"/>
+        <result column="amount" property="amount"/>
         <result column="order_status" property="orderStatus"/>
         <result column="created_time" property="createdTime"/>
         <result column="modified_time" property="modifiedTime"/>
@@ -21,5 +22,23 @@
         WHERE
             qr_code = #{qrCode}
     </select>
+
+    <select id="getOrderByOrderCode" parameterType="String" resultMap="OrderDO">
+        SELECT
+            *
+        FROM
+            order_table
+        WHERE
+            order_code = #{orderCode}
+    </select>
+
+    <update id="updateOrderAmountByCode">
+        UPDATE
+            order_table
+        SET
+            amount = #{amount}
+        WHERE
+            order_code = #{orderCode}
+    </update>
 
 </mapper>

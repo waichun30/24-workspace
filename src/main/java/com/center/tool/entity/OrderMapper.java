@@ -15,4 +15,8 @@ import org.apache.ibatis.annotations.Mapper;
 public interface OrderMapper {
 
     OrderDO getOrderByQrCode(String qrCode);
+
+    OrderDO getOrderByOrderCode(String orderCode);
+
+    void updateOrderAmountByCode(String orderCode, int amount);
 }

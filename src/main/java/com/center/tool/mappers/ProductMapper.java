@@ -6,8 +6,13 @@ package com.center.tool.mappers;
 
 import com.center.tool.entity.model.ProductDO;
 import com.center.tool.model.common.ProductBO;
+import com.center.tool.model.dto.ProductDTO;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
+
+
+import java.util.List;
 
 /**
  * @author wb-phoonwaic553932
@@ -20,6 +25,13 @@ public interface ProductMapper {
 
     ProductDO toDO(ProductBO productBO);
 
+    @Mapping(target ="productPrice", source = "productAmount")
     ProductBO toBO(ProductDO productDO);
+
+    List<ProductBO> toBOList(List<ProductDO> productDOList);
+
+    ProductDTO toDTO(ProductBO productBO);
+
+    List<ProductDTO> toDTOList(List<ProductBO> productBOList);
 
 }

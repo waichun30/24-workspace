@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.center.tool.entity.MerchantProdCategoryMapper">
+
+    <resultMap id="MerchantProdCategoryDO" type="com.center.tool.entity.model.MerchantProdCategoryDO">
+        <result column="merchant_code" property="merchantCode"/>
+        <result column="category_code" property="categoryCode"/>
+        <result column="category_name" property="categoryName"/>
+        <result column="sort" property="sort"/>
+        <result column="created_time" property="createdTime"/>
+        <result column="modified_time" property="modifiedTime"/>
+        <result column="extend_info" property="extendInfo"/>
+    </resultMap>
+
+
+    <select id="getMerchantProdCategoryDOByMerchantCode" parameterType="String" resultMap="MerchantProdCategoryDO">
+        SELECT
+            *
+        FROM
+            merchant_prod_category
+        WHERE
+            merchant_code = #{merchantCode}
+        ORDER BY
+            sort
+    </select>
+
+</mapper>

@@ -18,6 +18,6 @@ public interface ProductRepository {
 
     List<ProductDO> getProductByMerchantCode(String code);
 
-    List<ProductDO> getProductByMerchantCodeAndType(String code, String type);
+    List<ProductDO> getProductByMerchantCodeAndCategory(String code, String categoryCode);
 
 }

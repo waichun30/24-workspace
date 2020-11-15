@@ -16,4 +16,6 @@ public interface OrderProductRepository {
 
     List<OrderProductDO> getOrderProductByOrderCode(String orderCode);
 
+    void updateOrderProduct(String orderCode, String productCode, String quantity, String memo);
+
 }

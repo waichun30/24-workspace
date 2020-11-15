@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { TestwebComponent } from './testweb/testweb.component';
 import { WebComponent } from './web/web.component';
 import { OrderComponent } from './order/order.component';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestwebComponent,
     WebComponent,
-    OrderComponent
+    OrderComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,

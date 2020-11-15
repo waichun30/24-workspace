@@ -24,4 +24,14 @@
             order_code = #{orderCode}
     </select>
 
+
+
+    <insert id="updateOrderProduct">
+        INSERT INTO
+          `order_product`
+          (`order_code`, `product_code`, `quantity`, `memo`, `extend_info`)
+        VALUES
+          (#{orderCode}, #{productCode}, #{quantity}, #{memo}, '{}')
+    </insert>
+
 </mapper>

@@ -10,25 +10,22 @@ import java.util.Date;
 
 /**
  * @author wb-phoonwaic553932
- * @version $Id: OrderDO.java, v 0.1 2020-11-11 03:24 wb-phoonwaic553932 Exp $$
+ * @version $Id: MerchantProdCategoryDO.java, v 0.1 2020-11-14 18:58 wb-phoonwaic553932 Exp $$
  */
 @Data
-public class OrderDO {
-
-    private String orderCode;
+public class MerchantProdCategoryDO {
 
     private String merchantCode;
 
-    private String qrCode;
+    private String categoryCode;
 
-    private int amount;
+    private String categoryName;
 
-    private String orderStatus;
+    private int sort;
 
     private Date createdTime;
 
     private Date modifiedTime;
 
     private String extendInfo;
-
 }

@@ -24,7 +24,9 @@ public abstract class AbstractController {
 
 
     protected String parseResponse(Object o, HttpServletRequest request) {
+
         LoggingUtil.info(Loggers.BIZ_HTTP, this.getClass().getSimpleName() + "Request - " + o);
+
 
         // TODO throw exception
         if (!StringUtils.isEmpty(requiredField())) {

@@ -31,7 +31,7 @@ public class ProductDO {
 
     private String productStatus;
 
-    private String productType;
+    private String categoryCode;
 
     private Date createdTime;
 

@@ -12,4 +12,8 @@ import com.center.tool.entity.model.OrderDO;
  */
 public interface OrderRepository {
     OrderDO getOrderByQrCode(String qrCode);
+
+    OrderDO getOrderByOrderCode(String orderCode);
+
+    void updateOrderAmountByCode(String orderCode, int amount);
 }

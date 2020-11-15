@@ -2,24 +2,24 @@
  * Alipay.com Inc.
  * Copyright (c) 2004-2020 All Rights Reserved.
  */
-package com.center.tool.model.common;
+package com.center.tool.model.dto;
 
 import lombok.Data;
 
 /**
  * @author wb-phoonwaic553932
- * @version $Id: Item.java, v 0.1 2020-11-07 03:01 wb-phoonwaic553932 Exp $$
+ * @version $Id: ProductDTO.java, v 0.1 2020-11-14 17:23 wb-phoonwaic553932 Exp $$
  */
 @Data
-public class ProductBO {
+public class ProductDTO {
 
     private String productCode;
 
     private String merchantCode;
 
-    private String productImgPath;
-
     private String productName;
+
+    private String merchantName;
 
     private Double productPrice;
 
@@ -27,10 +27,9 @@ public class ProductBO {
 
     private String productDescription;
 
-    private String categoryCode;
+    private String productImgPath;
 
     private String productStatus;
 
-    private String categoryName;
-
+    private String categoryCode;
 }
